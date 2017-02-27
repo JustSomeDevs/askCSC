@@ -85,7 +85,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const app = new __WEBPACK_IMPORTED_MODULE_0_koa___default.a();
 
 app.use(foo => {
-  foo.body = `<h1>Hello World!</h1>`;
+  foo.body = `<h1>Hello World! This is hosted on heroku</h1>`;
 });
 
 app.listen(process.env.PORT || 3000);
