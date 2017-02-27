@@ -8,33 +8,33 @@ const common = {
         exclude: /node_modules/,
         loader: "babel-loader",
         query: {
-          presets: ['es2017']
-        }
+          presets: ['es2017'],
+        },
       },
       {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['eslint-loader', 'babel-loader']
+        loaders: ['eslint-loader', 'babel-loader'],
       }
     ]
   },
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
 };
 
 const client = {
   entry: "./src/Client/main.js",
   output: { path: __dirname + "/dist", filename: "client.bundle.js" },
-  target: 'web'
+  target: 'web',
 };
 
 const server = {
   entry: "./src/Server/index.js",
   output: { path: __dirname + "/dist", filename: "server.bundle.js" },
-  target: "node"
+  target: "node",
 };
 
 module.exports = [
   Object.assign({}, common, client),
-  Object.assign({}, common, server)
+  Object.assign({}, common, server),
 ];

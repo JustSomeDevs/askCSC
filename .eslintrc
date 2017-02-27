@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
-  "extends": "airbnb",
+  "extends": "eslint:recommended",
   "rules": {
-    "func-names": ["error", "never"]
+    "func-names": ["error", "never"],
   }
 }

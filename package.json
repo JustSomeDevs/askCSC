@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./dist/server.bundle.js",
     "watch": "webpack --progress --colors --watch",
-    "build": "webpack --config webpack.config.js && npm run smaller",
+    "build": "webpack --config webpack.config.js",
     "smaller": "uglifyjs --compress --output dist/client.bundle.js -- dist/client.bundle.js",
     "test": "mocha --compilers js:babel-register",
     "lint": ""
@@ -29,11 +29,8 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-register": "^6.23.0",
     "eslint": "^3.16.1",
-    "eslint-config-airbnb": "^14.1.0",
     "eslint-loader": "^1.6.3",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.0",
     "webpack": "^2.2.1",
@@ -42,6 +39,7 @@
   "dependencies": {
     "fastclick": "^1.0.6",
     "isomorphic-fetch": "^2.2.1",
+    "koa": "^2.0.1",
     "uglify-js": "^2.7.5"
   }
 }
