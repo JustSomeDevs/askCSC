@@ -3,5 +3,8 @@
   "extends": "eslint:recommended",
   "rules": {
     "func-names": ["error", "never"],
+  },
+  "globals": {
+    "process": true
   }
 }
