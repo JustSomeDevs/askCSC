@@ -48,7 +48,7 @@ class Server {
     }));
 
     // handle front page view -- proxy for /random/ until we (I) get some metric for rating -- switches on page 1
-    server.use(_.get('/', routes.handleFP));
+    server.use(_.get('/(.*)', routes.handleFP));
   }
 
   // log number of active requests

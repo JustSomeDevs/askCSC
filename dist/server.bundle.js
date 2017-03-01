@@ -153,7 +153,7 @@ class Server {
     })()));
 
     // handle front page view -- proxy for /random/ until we (I) get some metric for rating -- switches on page 1
-    server.use(__WEBPACK_IMPORTED_MODULE_2_koa_route___default.a.get('/', __WEBPACK_IMPORTED_MODULE_3__routes_routes_js__["a" /* default */].handleFP));
+    server.use(__WEBPACK_IMPORTED_MODULE_2_koa_route___default.a.get('/(.*)', __WEBPACK_IMPORTED_MODULE_3__routes_routes_js__["a" /* default */].handleFP));
   }
 
   // log number of active requests
