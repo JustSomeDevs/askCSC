@@ -1,3 +1,6 @@
+# Ignore our config file
+config.js
+
 # Pesky DS Store
 .DS_Store
 

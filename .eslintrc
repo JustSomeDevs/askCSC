@@ -3,8 +3,24 @@
   "extends": "eslint:recommended",
   "rules": {
     "func-names": ["error", "never"],
+    "no-console": "off",
+    "babel/new-cap": 1,
+    "babel/object-curly-spacing": 1,
+    "babel/no-await-in-loop": 1,
+    "babel/semi": 1,
+    "require-yield": "off",
   },
   "globals": {
-    "process": true
-  }
+    "process": true,
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true,
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": false,
+  },
+  "plugins": ["babel"],
 }

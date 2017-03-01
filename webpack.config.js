@@ -15,21 +15,27 @@ const common = {
         enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['eslint-loader', 'babel-loader'],
-      }
-    ]
+        loaders: ['eslint-loader'],
+      },
+    ],
   },
   externals: [nodeExternals()],
+  stats: {
+    warnings: false,
+  },
+  node: {
+    __dirname: false,
+  }
 };
 
 const client = {
-  entry: "./src/Client/main.js",
+  entry: "./src/client/main.js",
   output: { path: __dirname + "/dist", filename: "client.bundle.js" },
   target: 'web',
 };
 
 const server = {
-  entry: "./src/Server/index.js",
+  entry: "./src/server/index.js",
   output: { path: __dirname + "/dist", filename: "server.bundle.js" },
   target: "node",
 };
