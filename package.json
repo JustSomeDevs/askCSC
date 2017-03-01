@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/JustSomeDevs/askcsc.git"
   },
+  "engines": {
+    "node": "7.x"
+  },
   "author": "Albert Hermida <alberthermida@gmail.com>",
   "license": "MIT",
   "bugs": {
