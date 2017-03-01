@@ -4,7 +4,7 @@
  * NOTE: Handler functions for enpoints must share client code
  */
 import fs from 'fs'; //filesystem used for serving templates
-import fetch from 'isomorphic-fetch'; //koa request wrapper for oembed
+//import fetch from 'isomorphic-fetch'; //koa request wrapper for oembed
 
 //Route object
 const routes = {};

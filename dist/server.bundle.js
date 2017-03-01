@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 13);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -77,16 +77,16 @@ module.exports = require("os");
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_koa__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_koa__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_koa___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_koa__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa_send__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa_send__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_koa_send___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_koa_send__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_koa_route__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_koa_route__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_koa_route___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_koa_route__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__routes_routes_js__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_koa_mount__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_koa_mount__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_koa_mount___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_koa_mount__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_koa_bodyparser__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_koa_bodyparser__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_koa_bodyparser___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_koa_bodyparser__);
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
@@ -215,8 +215,6 @@ module.exports = require("readline");
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fs__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_fs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_fs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch__);
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 /**
@@ -225,7 +223,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
  * NOTE: Handler functions for enpoints must share client code
  */
  //filesystem used for serving templates
- //koa request wrapper for oembed
+//import fetch from 'isomorphic-fetch'; //koa request wrapper for oembed
 
 //Route object
 const routes = {};
@@ -242,7 +240,6 @@ function render(content, data) {
   return new Promise((resolve, reject) => {
     __WEBPACK_IMPORTED_MODULE_0_fs___default.a.readFile(`${__dirname}/../src/assets/templates/index.html`, { 'encoding': 'utf8' }, (err, layout) => {
       if (err) reject(err);
-      console.log(layout);
       const html = layout.replace('{{{body}}}', content).replace('{{{data}}}', encodeHTML(JSON.stringify(data)));
       resolve(html);
     });
@@ -275,40 +272,11 @@ routes.handleFP = (() => {
 routes.handleUpload = (() => {
   var _ref2 = _asyncToGenerator(function* (ctx) {
 
-    // s3 stuff goes here
-    console.log('I am s3');
     ctx.body = 'yo';
   });
 
   return function (_x2) {
     return _ref2.apply(this, arguments);
-  };
-})();
-
-// handle post to '/oembed' -- really just a solution to cors
-routes.handleEmbed = (() => {
-  var _ref3 = _asyncToGenerator(function* (ctx) {
-    let body = ctx.request.body;
-    let url = body.url;
-
-    //here check for oembed routes
-    if (ctx.body) {
-      var options = {
-        url: url,
-        method: "GET"
-      };
-      //real hacky
-      let response = yield __WEBPACK_IMPORTED_MODULE_1_isomorphic_fetch___default()(options);
-      let text = yield response.text();
-      ctx.body = text;
-    } else {
-
-      //reject
-    }
-  });
-
-  return function (_x3) {
-    return _ref3.apply(this, arguments);
   };
 })();
 
@@ -324,40 +292,34 @@ module.exports = require("fs");
 /* 8 */
 /***/ (function(module, exports) {
 
-module.exports = require("isomorphic-fetch");
+module.exports = require("koa");
 
 /***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = require("koa");
+module.exports = require("koa-bodyparser");
 
 /***/ }),
 /* 10 */
 /***/ (function(module, exports) {
 
-module.exports = require("koa-bodyparser");
+module.exports = require("koa-mount");
 
 /***/ }),
 /* 11 */
 /***/ (function(module, exports) {
 
-module.exports = require("koa-mount");
+module.exports = require("koa-route");
 
 /***/ }),
 /* 12 */
 /***/ (function(module, exports) {
 
-module.exports = require("koa-route");
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports) {
-
 module.exports = require("koa-send");
 
 /***/ }),
-/* 14 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
