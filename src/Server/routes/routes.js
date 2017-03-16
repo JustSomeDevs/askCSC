@@ -21,7 +21,9 @@ function render(content, data) {
   return new Promise((resolve, reject) => {
     fs.readFile(`${__dirname}/../src/assets/templates/index.html`,
       {'encoding': 'utf8'}, (err, layout) => {
-        if (err) reject(err);
+        if (err) {
+          return reject(err);
+        }
         const html = layout.replace('{{{body}}}', content).replace('{{{data}}}', encodeHTML(JSON.stringify(data)));
         resolve(html);
     });
@@ -29,11 +31,10 @@ function render(content, data) {
 }
 
 //handle '/' route
-routes.handleFP = async (ctx) => {
+export async function handleFP(ctx) {
 
   //do client calls and resolve our promise
   //const content = await ssr('group', ['/a/', 0], ctx);
-  //
   const content = {
     html: `<h1>Hello World</h1>`,
     state: {
@@ -43,11 +44,3 @@ routes.handleFP = async (ctx) => {
 
   ctx.body = await render(content.html, content.state);
 };
-
-// handle '/upload' route
-routes.handleUpload = async (ctx) => {
-
-  ctx.body = 'yo';
-};
-
-export default routes;

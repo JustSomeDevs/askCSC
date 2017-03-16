@@ -2,12 +2,12 @@
  * Server.js
  * -- Server class --> Responds to requests for Client Side Routes
  */
-import Koa from 'koa'; // kinda like flask/express, a little simpler
-import send from 'koa-send'; // serve static routes -- /static in our case
-import _ from 'koa-route'; // small router by koas
-import routes from '../routes/routes.js'; // handler functions for routes
-import mount from 'koa-mount'; // allows us to mount paths
-import bodyParser from 'koa-bodyparser'; // easy access to json body
+import Koa from 'koa';
+import send from 'koa-send';
+import _ from 'koa-route';
+import * as routes from '../routes/routes.js';
+import mount from 'koa-mount';
+import bodyParser from 'koa-bodyparser';
 
 class Server {
 

@@ -31,7 +31,7 @@ const common = {
 const client = {
   entry: "./src/client/main.js",
   output: { path: __dirname + "/dist", filename: "client.bundle.js" },
-  target: 'web',
+  target: "web",
 };
 
 const server = {
